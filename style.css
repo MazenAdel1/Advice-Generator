@@ -46,12 +46,13 @@ q {
   font-size: 28px;
   padding: 25px 0;
   color: var(--light-cyan);
+  font-weight: 800;
 }
 
 .advice-id {
   color: var(--neon-green);
   font-weight: 400;
-  font-size: 15 px;
+  font-size: 13px;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
