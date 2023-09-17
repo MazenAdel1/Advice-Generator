@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Advice generator app</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="content-container">
+        <span class="advice-id"> Advice #<span class="id"></span> </span>
+        <q class="advice"></q>
+        <img
+          src="./images/pattern-divider-desktop.svg"
+          alt="pattern-divider"
+          class="desktop-devider devider"
+        />
+        <img
+          src="./images/pattern-divider-mobile.svg"
+          alt="pattern-divider"
+          class="mobile-devider devider"
+        />
+        <button class="change-button">
+          <img src="./images/rotate.svg" alt="rotate" />
+        </button>
+      </div>
+    </div>
+
+    <script>
+      let advice = document.querySelector(`.advice`),
+        adviceId = document.querySelector(`.id`),
+        changeButton = document.querySelector(`.change-button`);
+
+      fetch(`https://api.adviceslip.com/advice`)
+        .then((x) => x.json())
+        .then((data) => {
+          advice.innerHTML = data.slip.advice;
+          adviceId.innerHTML = data.slip.id;
+        });
+
+      changeButton.onclick = () => {
+        fetch(`https://api.adviceslip.com/advice`)
+          .then((x) => x.json())
+          .then((data) => {
+            if (data.slip.id == adviceId.innerHTML) {
+              fetch(`https://api.adviceslip.com/advice/${data.slip.id + 1}`)
+                .then((x) => x.json())
+                .then((x) => {
+                  advice.innerHTML = x.slip.advice;
+                  adviceId.innerHTML = x.slip.id;
+                });
+            } else {
+              advice.innerHTML = data.slip.advice;
+              adviceId.innerHTML = data.slip.id;
+            }
+          });
+      };
+    </script>
+  </body>
+</html>
