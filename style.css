@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;800&display=swap");
 
 :root {
   --light-cyan: hsl(193, 38%, 86%);
@@ -50,7 +50,10 @@ q {
 
 .advice-id {
   color: var(--neon-green);
+  font-weight: 400;
   font-size: 15 px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 }
 
 .change-button {
